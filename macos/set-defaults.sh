@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 echo 'start osx/set-defaults.sh'
 
+# For inspiration and other options, see:
+# https://github.com/mathiasbynens/dotfiles/blob/master/.macos
+
 # Ask for the administrator password upfront
 sudo -v
 
@@ -73,6 +76,12 @@ sudo pmset -a sms 0
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
 
+# Trackpad: map bottom right corner to right-click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Max (editable)" 80
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" 80
@@ -81,6 +90,13 @@ defaults write com.apple.BluetoothAudioAgent "Apple Initial Bitpool Min (editabl
 defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool" 80
 defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Max" 80
 defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Min" 80
+
+# Disable “natural” (Lion-style) scrolling
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+
+# Set a blazingly fast keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
