@@ -87,7 +87,8 @@ ssh-add -A 2>/dev/null;
 export XDEBUG_CONFIG="idekey=PHPSTORM"
 
 # Enable autosuggestions
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.dotfiles/misc/oh-my-zsh-custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 
 # Extra paths
 #export PATH="$HOME/.composer/vendor/bin:$PATH"
@@ -106,4 +107,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-eval "$(rbenv init -)"
+export PATH="/usr/local/opt/node@12/bin:$PATH"
+export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
